@@ -10,6 +10,7 @@ import {
 } from './style';
 import formatCurrency from '../../../utils/formatCurrency';
 import Button from '../../atoms/Button';
+import { TransactionStatus } from '../../../interfaces/transactionList';
 
 interface TransactionItemProps {
   senderBank?: string;
@@ -17,6 +18,7 @@ interface TransactionItemProps {
   beneficiaryName?: string;
   createdDate?: string;
   amount?: number;
+  status?: TransactionStatus;
 }
 
 const TransactionItem: FC<TransactionItemProps> = ({
@@ -25,9 +27,12 @@ const TransactionItem: FC<TransactionItemProps> = ({
   beneficiaryName = '',
   createdDate = '',
   amount = 0,
+  status = TransactionStatus.SUCCESS,
 }) => {
+  const isSuccess = status === TransactionStatus.SUCCESS;
+
   return (
-    <Container>
+    <Container status={status}>
       <InfoWrapper>
         <BankName>
           {senderBank}
@@ -45,7 +50,9 @@ const TransactionItem: FC<TransactionItemProps> = ({
           {createdDate}
         </DetailInfo>
       </InfoWrapper>
-      <Button variant="secondary">Pengecekan</Button>
+      <Button variant={isSuccess ? 'primary' : 'secondary'}>
+        {isSuccess ? 'Berhasil' : 'Pengecekan'}
+      </Button>
     </Container>
   );
 };

@@ -1,8 +1,10 @@
 import { FC } from 'react';
-import SortSearchInput from '../components/organisms/SortSearchInput';
-import TransactionList from '../components/organisms/TransactionList';
-import MobileTemplate from '../components/templates/MobileTemplate';
-import TransactionTemplate from '../components/templates/TransactionTemplate';
+import SortSearchInput from '../../components/organisms/SortSearchInput';
+import TransactionList from '../../components/organisms/TransactionList';
+import MobileTemplate from '../../components/templates/MobileTemplate';
+import TransactionTemplate from '../../components/templates/TransactionTemplate';
+
+import { ListWrapper } from './style';
 
 const Home: FC = () => {
   return (
@@ -22,7 +24,9 @@ const Home: FC = () => {
             'Tanggal terlama',
           ]}
         />
-        <TransactionList />
+        <ListWrapper>
+          <TransactionList />
+        </ListWrapper>
       </TransactionTemplate>
     </MobileTemplate>
   );

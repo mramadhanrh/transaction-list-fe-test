@@ -1,12 +1,17 @@
 import styled from 'styled-components';
+import { TransactionStatus } from '../../../interfaces/transactionList';
 
-export const Container = styled.div`
+export const Container = styled.div<{ status?: TransactionStatus }>`
   display: flex;
   align-items: center;
   justify-content: space-between;
   background-color: ${({ theme }) => theme.color.white};
   padding: 18px;
-  border-left: 5px solid ${({ theme }) => theme.color.green};
+  border-left: 5px solid
+    ${({ theme, status }) =>
+      status === TransactionStatus.SUCCESS
+        ? theme.color.green
+        : theme.color.orange};
   border-radius: 4px;
 `;
 

@@ -5,6 +5,11 @@ const defaultTheme: DefaultTheme = {
     cloud: '#f3f7f9',
     green: '#56b586',
     orange: '#fd6542',
+    linen: '#ffece8',
+    lightgray: '#ced4da',
+    platinum: '#e7e7e9',
+    white: '#ffffff',
+    black: '#000000',
   },
 };
 

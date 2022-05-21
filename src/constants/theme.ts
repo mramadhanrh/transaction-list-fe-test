@@ -11,6 +11,18 @@ const defaultTheme: DefaultTheme = {
     white: '#ffffff',
     black: '#000000',
   },
+  buttonColor: {
+    primary: '#56b586',
+    secondary: '#ffffff',
+  },
+  buttonBorderColor: {
+    primary: '#56b586',
+    secondary: '#fd6542',
+  },
+  buttonTextColor: {
+    primary: '#ffffff',
+    secondary: '#333333',
+  },
 };
 
 export default defaultTheme;

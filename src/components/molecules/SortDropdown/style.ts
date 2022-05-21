@@ -62,6 +62,5 @@ export const ContentList = styled.div<{ active?: boolean }>`
 
   & > button {
     cursor: ${({ active }) => (active ? 'pointer' : 'initial')};
-    height: 43px;
   }
 `;

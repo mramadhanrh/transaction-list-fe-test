@@ -21,7 +21,6 @@
         "args": "none"
       }
     ],
-    "@typescript-eslint/semi": ["off"],
     "@typescript-eslint/no-unused-vars": [
       "warn",
       {

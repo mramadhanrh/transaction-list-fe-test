@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import SearchInput from '../components/molecules/SearchInput';
+import SortSearchInput from '../components/organisms/SortSearchInput';
 import TransactionList from '../components/organisms/TransactionList';
 import MobileTemplate from '../components/templates/MobileTemplate';
 import TransactionTemplate from '../components/templates/TransactionTemplate';
@@ -13,7 +13,15 @@ const Home: FC = () => {
         description="Kamu telah melakukan transaksi sebesar {amount} sejak menggunakan Flip"
         amount={5000000}
       >
-        <SearchInput />
+        <SortSearchInput
+          placeholder="Cari nama atau bank"
+          sortData={[
+            'Nama A-Z',
+            'Nama Z-A',
+            'Tanggal terbaru',
+            'Tanggal terlama',
+          ]}
+        />
         <TransactionList />
       </TransactionTemplate>
     </MobileTemplate>

@@ -21,7 +21,7 @@ export const Greeting = styled.h2`
 `;
 
 export const Description = styled.p`
-  margin: 0;
+  margin: 0 0 12px;
   color: #333333;
   & > span {
     font-weight: 900;

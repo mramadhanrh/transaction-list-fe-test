@@ -3,10 +3,13 @@ import SortSearchInput from '../../components/organisms/SortSearchInput';
 import TransactionList from '../../components/organisms/TransactionList';
 import MobileTemplate from '../../components/templates/MobileTemplate';
 import TransactionTemplate from '../../components/templates/TransactionTemplate';
+import { useGetTransactionListQuery } from '../../services/transactionList';
 
 import { ListWrapper } from './style';
 
 const Home: FC = () => {
+  const { data = [], error, isLoading } = useGetTransactionListQuery();
+
   return (
     <MobileTemplate>
       <TransactionTemplate
@@ -25,7 +28,7 @@ const Home: FC = () => {
           ]}
         />
         <ListWrapper>
-          <TransactionList />
+          <TransactionList data={data} />
         </ListWrapper>
       </TransactionTemplate>
     </MobileTemplate>

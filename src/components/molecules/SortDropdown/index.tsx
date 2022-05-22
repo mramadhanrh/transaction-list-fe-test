@@ -5,11 +5,13 @@ import useOutsideClickAlert from '../../hooks/useOutsideClickAlert';
 import { ActiveItem, Container, ContentItem, ContentList } from './style';
 
 interface SortDropdownProps {
+  activeItem?: string;
   data?: string[];
   onSelect?(index: number): void;
 }
 
 const SortDropdown: FC<SortDropdownProps> = ({
+  activeItem = '',
   data = [],
   onSelect = () => {},
 }) => {
@@ -25,7 +27,7 @@ const SortDropdown: FC<SortDropdownProps> = ({
   return (
     <Container ref={dropdownRef} onClick={toggleDropdown}>
       <ActiveItem>
-        URUTKAN
+        {activeItem}
         <span>
           <FontAwesomeIcon icon={faChevronDown} />
         </span>

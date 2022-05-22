@@ -3,8 +3,6 @@ import { Route, Routes } from 'react-router-dom';
 
 import Home from './pages/Home';
 
-import logo from './logo.svg';
-
 function App() {
   return (
     <Routes>

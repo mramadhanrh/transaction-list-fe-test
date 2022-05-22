@@ -19,6 +19,7 @@ export const ActiveItem = styled.button`
   background-color: ${({ theme }) => theme.color.white};
   text-align: right;
   border-radius: 4px;
+  white-space: nowrap;
 
   & > span {
     color: ${({ theme }) => theme.color.orange};

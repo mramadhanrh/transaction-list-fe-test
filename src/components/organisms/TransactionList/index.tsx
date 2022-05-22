@@ -1,8 +1,5 @@
 import { FC } from 'react';
-import {
-  TransactionItemData,
-  TransactionStatus,
-} from '../../../interfaces/transactionList';
+import { TransactionItemData } from '../../../interfaces/transactionList';
 import TransactionItem from '../../molecules/TransactionItem';
 import { Container } from './style';
 

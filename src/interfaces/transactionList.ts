@@ -1,3 +1,10 @@
+export enum TransactionListSort {
+  LETTERS_ASCENDING = 0,
+  LETTERS_DESCENDING = 1,
+  DATE_ASCENDING = 2,
+  DATE_DESCENDING = 3,
+}
+
 export enum TransactionStatus {
   SUCCESS = 'SUCCESS',
   PENDING = 'PENDING',

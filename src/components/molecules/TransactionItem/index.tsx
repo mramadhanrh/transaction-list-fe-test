@@ -30,16 +30,20 @@ const TransactionItem: FC<TransactionItemProps> = ({
   status = TransactionStatus.SUCCESS,
 }) => {
   const isSuccess = status === TransactionStatus.SUCCESS;
+  const formatLocalBank = (value: string) =>
+    value.length > 4
+      ? `${value.charAt(0).toUpperCase()}${value.slice(1)}`
+      : value.toUpperCase();
 
   return (
     <Container status={status}>
       <InfoWrapper>
         <BankName>
-          {senderBank}
+          {formatLocalBank(senderBank)}
           <span>
             <FontAwesomeIcon icon={faArrowRight} />
           </span>
-          {beneficiaryBank}
+          {formatLocalBank(beneficiaryBank)}
         </BankName>
         <BeneficiaryName>{beneficiaryName}</BeneficiaryName>
         <DetailInfo>

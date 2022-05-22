@@ -1,8 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import {
-  TransactionItemData,
-  TransactionListData,
-} from '../interfaces/transactionList';
+import { TransactionListData } from '../interfaces/transactionList';
 
 export const transactionList = createApi({
   baseQuery: fetchBaseQuery({
@@ -10,10 +7,8 @@ export const transactionList = createApi({
       'https://cors-anywhere.herokuapp.com/https://recruitment-test.flip.id/',
   }),
   endpoints: (builder) => ({
-    getTransactionList: builder.query<TransactionItemData[], void>({
+    getTransactionList: builder.query<TransactionListData, void>({
       query: () => 'frontend-test',
-      transformResponse: (response: TransactionListData) =>
-        Object.values(response),
     }),
   }),
 });

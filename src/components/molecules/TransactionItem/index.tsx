@@ -19,6 +19,7 @@ interface TransactionItemProps {
   createdDate?: string;
   amount?: number;
   status?: TransactionStatus;
+  onClick?(): void;
 }
 
 const TransactionItem: FC<TransactionItemProps> = ({
@@ -28,6 +29,7 @@ const TransactionItem: FC<TransactionItemProps> = ({
   createdDate = '',
   amount = 0,
   status = TransactionStatus.SUCCESS,
+  onClick = () => {},
 }) => {
   const isSuccess = status === TransactionStatus.SUCCESS;
   const formatLocalBank = (value: string) =>
@@ -36,7 +38,7 @@ const TransactionItem: FC<TransactionItemProps> = ({
       : value.toUpperCase();
 
   return (
-    <Container status={status}>
+    <Container onClick={onClick} status={status}>
       <InfoWrapper>
         <BankName>
           {formatLocalBank(senderBank)}

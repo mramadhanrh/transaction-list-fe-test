@@ -1,4 +1,5 @@
 import { ChangeEventHandler, FC, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import withTransactionList from '../../components/hoc/withTransactionList';
 import SortSearchInput from '../../components/organisms/SortSearchInput';
 import TransactionList from '../../components/organisms/TransactionList';
@@ -15,6 +16,7 @@ import { ListWrapper } from './style';
 interface HomeProps {
   data?: TransactionItemData[];
   searchValue?: string;
+  totalTransaction?: number;
   onFilterData?(sortOption: TransactionListSort): void;
   onSearchData?: ChangeEventHandler<HTMLInputElement>;
 }
@@ -22,16 +24,22 @@ interface HomeProps {
 const Home: FC<HomeProps> = ({
   data = [],
   searchValue = '',
+  totalTransaction = 0,
   onFilterData = () => [],
   onSearchData = () => {},
 }) => {
   const [activeSort, setActiveSort] = useState<TransactionListSort | null>(
     null
   );
+  const navigate = useNavigate();
 
   const handleSortSelect = (idx: number) => {
     setActiveSort(idx);
     onFilterData(idx);
+  };
+
+  const handleTransactionClick = (item: TransactionItemData) => {
+    navigate(`/${item.id}`);
   };
 
   return (
@@ -40,7 +48,7 @@ const Home: FC<HomeProps> = ({
         title="Daftar Transaksi"
         greeting="Halo kak!"
         description="Kamu telah melakukan transaksi sebesar {amount} sejak menggunakan Flip"
-        amount={5000000}
+        amount={totalTransaction}
       >
         <SortSearchInput
           activeSort={
@@ -53,7 +61,10 @@ const Home: FC<HomeProps> = ({
           value={searchValue}
         />
         <ListWrapper>
-          <TransactionList data={data} />
+          <TransactionList
+            data={data}
+            onTransactionClick={handleTransactionClick}
+          />
         </ListWrapper>
       </TransactionTemplate>
     </MobileTemplate>

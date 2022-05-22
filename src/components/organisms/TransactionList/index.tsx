@@ -5,9 +5,13 @@ import { Container } from './style';
 
 interface TransactionListProps {
   data: TransactionItemData[];
+  onTransactionClick?(transactionItem: TransactionItemData): void;
 }
 
-const TransactionList: FC<TransactionListProps> = ({ data = [] }) => {
+const TransactionList: FC<TransactionListProps> = ({
+  data = [],
+  onTransactionClick = () => {},
+}) => {
   const getSplittedDate = (date: string) => date.split(' ');
   return (
     <Container>
@@ -20,6 +24,7 @@ const TransactionList: FC<TransactionListProps> = ({ data = [] }) => {
           createdDate={getSplittedDate(item.created_at)[0]}
           amount={item.amount}
           status={item.status}
+          onClick={() => onTransactionClick(item)}
         />
       ))}
     </Container>

@@ -1,7 +1,10 @@
 import styled from 'styled-components';
 import { TransactionStatus } from '../../../interfaces/transactionList';
 
-export const Container = styled.div<{ status?: TransactionStatus }>`
+export const Container = styled.button<{ status?: TransactionStatus }>`
+  width: 100%;
+  border: none;
+  text-align: left;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -13,6 +16,9 @@ export const Container = styled.div<{ status?: TransactionStatus }>`
         ? theme.color.green
         : theme.color.orange};
   border-radius: 4px;
+  font-size: 16px;
+  box-sizing: border-box;
+  cursor: pointer;
 `;
 
 export const InfoWrapper = styled.div``;

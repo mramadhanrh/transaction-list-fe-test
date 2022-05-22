@@ -14,6 +14,7 @@ import { useGetTransactionListQuery } from '../../../services/transactionList';
 interface WithTransactionListProps {
   data?: TransactionItemData[];
   searchValue?: string;
+  totalTransaction?: number;
   onFilterData?(sortOption: TransactionListSort): void;
   onSearchData?: ChangeEventHandler<HTMLInputElement>;
 }
@@ -21,10 +22,15 @@ interface WithTransactionListProps {
 const withTransactionList =
   (WrappedComponent: FC<WithTransactionListProps>): FC =>
   (props) => {
-    const { data = [], isLoading } = useGetTransactionListQuery();
+    const { data = {}, isLoading } = useGetTransactionListQuery();
     const [sortedData, setSortedData] = useState<TransactionItemData[]>([]);
     const [searchData, setSearchData] = useState<TransactionItemData[]>([]);
     const [searchValue, setSearchValue] = useState('');
+    const [totalTransaction, setTotalTransaction] = useState(0);
+
+    const setCountTotalTransaction = (list: TransactionItemData[]) => {
+      setTotalTransaction(list.reduce((a, b) => a + b.amount, 0));
+    };
 
     const handleSortedSearchData = (search: string) => {
       setSearchData(
@@ -46,7 +52,7 @@ const withTransactionList =
     };
 
     const handleSortByLetters = (isAscending: boolean) => {
-      const newSortedData = [...data].sort((a, b) => {
+      const newSortedData = Object.values(data).sort((a, b) => {
         const nameA: string = a.beneficiary_name.toLowerCase();
         const nameB: string = b.beneficiary_name.toLowerCase();
 
@@ -58,7 +64,7 @@ const withTransactionList =
     };
 
     const handleSortByDate = (isAscending: boolean) => {
-      const newSortedData = [...data].sort((a, b) => {
+      const newSortedData = Object.values(data).sort((a, b) => {
         const dateA: Date = new Date(a.created_at);
         const dateB: Date = new Date(b.created_at);
 
@@ -90,14 +96,20 @@ const withTransactionList =
     };
 
     useEffect(() => {
-      if (!isLoading) setSortedData(data);
-    }, [data, isLoading]);
+      if (!isLoading) {
+        const transactionArr: TransactionItemData[] = Object.values(data);
+        setSortedData(transactionArr);
+        setCountTotalTransaction(transactionArr);
+      }
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [isLoading]);
 
     return (
       <WrappedComponent
         {...props}
         data={searchValue ? searchData : sortedData}
         searchValue={searchValue}
+        totalTransaction={totalTransaction}
         onFilterData={handleSortData}
         onSearchData={handleSearchChange}
       />

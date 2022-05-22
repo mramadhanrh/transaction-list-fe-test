@@ -23,7 +23,7 @@ const TransactionTemplate: FC<TransactionTemplateProps> = ({
       .replaceAll(',', '.')}`;
     return (
       <Description>
-        {firstText} <span>{amount && amountCurrency}</span> {closingText}
+        {firstText} <span>{amountCurrency}</span> {closingText}
       </Description>
     );
   };

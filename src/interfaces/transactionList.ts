@@ -22,6 +22,7 @@ export interface TransactionItemData {
   created_at: string;
   completed_at: string;
   fee: number;
+  unique_code: number;
 }
 export interface TransactionListData {
   [key: string]: TransactionItemData;

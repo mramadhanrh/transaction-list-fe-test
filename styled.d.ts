@@ -11,7 +11,7 @@ declare module 'styled-components' {
     | 'white'
     | 'black';
 
-  export type ButtonVariant = 'primary' | 'secondary';
+  export type ButtonVariant = 'primary' | 'secondary' | 'outline';
 
   export interface DefaultTheme {
     color: Record<ColorVariant, string>;

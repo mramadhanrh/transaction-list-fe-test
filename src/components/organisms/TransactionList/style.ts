@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  & > button {
+  & > div {
     margin-bottom: 12px;
   }
 `;

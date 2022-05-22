@@ -11,6 +11,7 @@ import {
 import formatCurrency from '../../../utils/formatCurrency';
 import Button from '../../atoms/Button';
 import { TransactionStatus } from '../../../interfaces/transactionList';
+import { formatLocalBank } from '../../../utils/formatLocalBank';
 
 interface TransactionItemProps {
   senderBank?: string;
@@ -32,10 +33,6 @@ const TransactionItem: FC<TransactionItemProps> = ({
   onClick = () => {},
 }) => {
   const isSuccess = status === TransactionStatus.SUCCESS;
-  const formatLocalBank = (value: string) =>
-    value.length > 4
-      ? `${value.charAt(0).toUpperCase()}${value.slice(1)}`
-      : value.toUpperCase();
 
   return (
     <Container onClick={onClick} status={status}>

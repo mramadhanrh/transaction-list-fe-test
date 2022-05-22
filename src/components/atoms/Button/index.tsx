@@ -11,6 +11,7 @@ const Button = styled.button<ButtonProps>`
   border-radius: 4px;
   font-size: 14px;
   padding: 4px 8px;
+  cursor: pointer;
 `;
 
 export default Button;

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { TransactionStatus } from '../../../interfaces/transactionList';
 
-export const Container = styled.button<{ status?: TransactionStatus }>`
+export const Container = styled.div<{ status?: TransactionStatus }>`
   width: 100%;
   border: none;
   text-align: left;

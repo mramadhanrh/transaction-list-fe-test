@@ -101,7 +101,8 @@ const withTransactionList =
         setSortedData(transactionArr);
         setCountTotalTransaction(transactionArr);
       }
-    }, [data, isLoading]);
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [isLoading]);
 
     return (
       <WrappedComponent

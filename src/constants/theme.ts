@@ -14,14 +14,17 @@ const defaultTheme: DefaultTheme = {
   buttonColor: {
     primary: '#56b586',
     secondary: '#ffffff',
+    outline: 'transparent',
   },
   buttonBorderColor: {
     primary: '#56b586',
     secondary: '#fd6542',
+    outline: '#fd6542',
   },
   buttonTextColor: {
     primary: '#ffffff',
     secondary: '#333333',
+    outline: '#fd6542',
   },
 };
 
